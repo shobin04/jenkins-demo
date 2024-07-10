@@ -34,7 +34,7 @@ pipeline {
         }  
         stage ('deploy') {
             steps {
-                 sh"""sudo cp /var/lib/jenkins/workspace/Demo-Project/java-hello-world-with-maven-master/target/my-app-1.0-SNAPSHOT.war /opt/tomcat/webapps
+                 sh"""sudo cp /var/lib/jenkins/workspace/Demo-Project/java-hello-world-with-maven-master/target/jb-hello-world-maven-0.2.0.jar /opt/tomcat/webapps
                  sudo systemctl restart tomcat
                  """
             }
