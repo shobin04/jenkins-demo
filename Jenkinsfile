@@ -3,7 +3,9 @@ pipeline {
     
     stages {
         stage ('SCM checkout') {
-               git 'https://github.com/shobin04/jenkins.git'
+            steps {
+               git 'https://github.com/shobin04/jenkins-demo.git'
+            }
         }   
         stage ('build') {
             steps {
