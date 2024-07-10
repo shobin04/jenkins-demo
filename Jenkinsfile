@@ -3,11 +3,16 @@ pipeline {
     
     stages {
         stage ('SCM checkout') {
-           steps {
                git 'https://github.com/shobin04/jenkins.git'
-            }
         }   
-    stage('SonarQube') {
+        stage ('build') {
+            steps {
+               sh""" cd /var/lib/jenkins/workspace/Demo-Project/java-hello-world-with-maven-master
+               mvn package
+               """
+            }
+        }  
+        stage('SonarQube') {
           environment {
             SONAR_RUNNER_HOME = tool 'SonarQube'
             PROJECT_NAME = "sample"
@@ -24,13 +29,6 @@ pipeline {
              }
           }
        }
-        stage ('build') {
-            steps {
-               sh""" cd /var/lib/jenkins/workspace/Demo-Project/java-hello-world-with-maven-master
-               mvn package
-               """
-            }
-        }  
         stage ('deploy') {
             steps {
                  sh"""sudo cp /var/lib/jenkins/workspace/Demo-Project/java-hello-world-with-maven-master/target/my-app-1.0-SNAPSHOT.war /opt/tomcat/webapps
