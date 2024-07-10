@@ -14,7 +14,7 @@ pipeline {
           }
           steps {
             withSonarQubeEnv('SonarQube') {
-                sh '''cd /var/lib/jenkins/workspace/Java-Project/java-hello-world-with-maven-master
+                sh '''cd /var/lib/jenkins/workspace/Demo-Project/java-hello-world-with-maven-master
                 mvn clean verify sonar:sonar \
                -Dsonar.projectKey=sample \
                -Dsonar.projectName='sample' \
@@ -26,14 +26,14 @@ pipeline {
        }
         stage ('build') {
             steps {
-               sh""" cd /var/lib/jenkins/workspace/java-maven-project/Java-Project/java-hello-world-with-maven-master
+               sh""" cd /var/lib/jenkins/workspace/Demo-Project/java-hello-world-with-maven-master
                mvn package
                """
             }
         }  
         stage ('deploy') {
             steps {
-                 sh"""sudo cp /var/lib/jenkins/workspace/Java-Project/java-hello-world-with-maven-master/target/my-app-1.0-SNAPSHOT.war /opt/tomcat/webapps
+                 sh"""sudo cp /var/lib/jenkins/workspace/Demo-Project/java-hello-world-with-maven-master/target/my-app-1.0-SNAPSHOT.war /opt/tomcat/webapps
                  sudo systemctl restart tomcat
                  """
             }
