@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage ('SCM checkout') {
             steps {
-               git 'https://github.com/shobin04/jenkins-demo.git'
+              git branch: 'main', 
+                    url: 'https://github.com/shobin04/jenkins-demo.git'
             }
         }   
         stage('SonarQube') {
