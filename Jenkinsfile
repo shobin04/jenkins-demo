@@ -39,10 +39,5 @@ pipeline {
                  """
             }
         }
-        stage ('post build') {
-               steps {
-                   sh "echo "build passed""
-               }
-          }
     }
 }
