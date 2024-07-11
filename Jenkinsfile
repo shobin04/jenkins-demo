@@ -38,6 +38,11 @@ pipeline {
                  sudo systemctl restart tomcat
                  """
             }
-        }   
+        }
+        stage ('post build') {
+               steps {
+                   sh "echo "build passed""
+               }
+          }
     }
 }
